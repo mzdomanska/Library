@@ -1,9 +1,6 @@
 package org.myproject.library.library.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -12,6 +9,9 @@ import java.util.UUID;
 public class Reader {
 
     @Id
+    @GeneratedValue
+    @Column(name = "reader_id")
+    private Long readerId;
     @Column(name = "card_number")
     private String cardNumber = UUID.randomUUID().toString();
     @Column(name = "first_name")
@@ -30,6 +30,10 @@ public class Reader {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+    }
+
+    public Long getReaderId() {
+        return readerId;
     }
 
     public String getCardNumber() {
